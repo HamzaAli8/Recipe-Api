@@ -1,9 +1,8 @@
-package com.example.Recipe.Project.Services;
+package com.example.Recipe.Project.services;
 
 import com.example.Recipe.Project.models.Recipe;
-import com.example.Recipe.Project.models.Review;
+import com.example.Recipe.Project.exceptions.NoSuchRecipeException;
 import com.example.Recipe.Project.repos.RecipeRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +32,7 @@ public class RecipeService {
 
     }
 
-    public Recipe getRecipeById(Long id) throws NoSuchRecipeException{
+    public Recipe getRecipeById(Long id) throws NoSuchRecipeException {
 
         Optional<Recipe> recipeOptional = recipeRepo.findById(id);
 
@@ -86,7 +85,7 @@ public class RecipeService {
 
     public ArrayList<Recipe> getRecipeByUsername(String username) throws NoSuchRecipeException{
 
-        ArrayList<Recipe> recipes = recipeRepo.findByUsername(username);
+        ArrayList<Recipe> recipes = recipeRepo.findByUserUsername(username);
 
         if(recipes.isEmpty()){
             throw new NoSuchRecipeException("No recipes could be found for username " + username);

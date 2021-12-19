@@ -1,0 +1,53 @@
+{
+  "name":"Spaghetti Bolognese",
+  "minutesToMake":40,
+  "difficultyRating":6,
+  "ingredients":[
+    {
+      "name":"beef",
+      "amount":"300g"
+    },
+    {
+      "name":"tomato",
+      "amount":"1 1/4 cups"
+    },
+    {
+      "name":"Worcestershire sauce",
+      "amount":"3/4 cup"
+    },
+    {
+      "name":"sugar",
+      "amount":"1 tbsp"
+    },
+    {
+      "name":"salt",
+      "amount":"1/2 tsp"
+    },
+    {
+      "name":"butter",
+      "amount":"1 tbsp, or as needed"
+    },
+    {
+      "name":"beef cube powder",
+      "amount":"1 tbsp, or as needed"
+    }
+  ],
+  "steps":[
+    {
+      "stepNumber":1,
+      "description":"Heat oil in a large pot or deep skillet over medium high heat. Add onion and garlic, cook for 3 minutes or until light golden and softened."
+    },
+    {
+      "stepNumber":2,
+      "description":"Turn heat up to high and add beef. Cook, breaking it up as your go, until browned."
+    },
+    {
+      "stepNumber":3,
+      "description":"Add remaining ingredients except salt and pepper. Stir, bring to a simmer then turn down to medium so it bubbles gently. Cook for 20 – 30 minutes (no lid), adding water if the sauce gets too thick for your taste. Stir occasionally."
+    },
+    {
+      "stepNumber":4,
+      "description":"Adjust salt and pepper to taste right at the end. Serve over spaghetti – though if you have the time, I recommend tossing the sauce and pasta per steps below."
+    }
+  ]
+}

@@ -1,8 +1,11 @@
-package com.example.Recipe.Project.Services;
+package com.example.Recipe.Project.services;
 
 import com.example.Recipe.Project.models.Recipe;
 import com.example.Recipe.Project.models.Review;
+import com.example.Recipe.Project.exceptions.NoSuchRecipeException;
+import com.example.Recipe.Project.exceptions.NoSuchReviewException;
 import com.example.Recipe.Project.repos.ReviewRepo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,7 +50,7 @@ public class ReviewService {
 
     public ArrayList<Review> getReviewByUsername(String username) throws NoSuchReviewException{
 
-        ArrayList<Review> reviews = reviewRepo.findByUsername(username);
+        ArrayList<Review> reviews = reviewRepo.findByUserUsername(username);
 
         if(reviews.isEmpty()){
             throw new NoSuchReviewException("No reviews could be found for username " + username);
@@ -64,7 +67,7 @@ public class ReviewService {
         Recipe recipe = recipeService.getRecipeById(recipeId);
         recipe.getReviews().add(review);
 
-        if (recipe.getUsername().equals(review.getUsername())){
+        if (recipe.getUser().getUsername().equals(review.getUser().getUsername())){
 
             throw new NoSuchRecipeException("Sorry there mate, you cannot rate your own recipes");
         }
@@ -85,15 +88,24 @@ public class ReviewService {
         return review;
     }
 
-    public Review updateReviewById(Review reviewToUpdate) throws NoSuchReviewException {
+    public Review updateReviewById(Review reviewToUpdate, Long id) throws NoSuchReviewException {
         try {
-            Review review = getReviewById(reviewToUpdate.getId());
+            Review review = getReviewById(id);
+            if(review != null){
+                if(reviewToUpdate.getRating() != null){
+
+                    review.setRating(reviewToUpdate.getRating());
+                }
+                if(reviewToUpdate.getDescription() != null){
+                    review.setDescription(reviewToUpdate.getDescription());
+                }
+                return reviewRepo.save(review);
+            }
         } catch (NoSuchReviewException e) {
             throw new NoSuchReviewException("The review you are trying to update. Maybe you meant to create one? If not," +
                     "please double check the ID you passed in.");
         }
-        reviewRepo.save(reviewToUpdate);
-        return reviewToUpdate;
+        return null;
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.Recipe.Project.Services;
+package com.example.Recipe.Project.exceptions;
 
 public class NoSuchReviewException extends Exception {
 

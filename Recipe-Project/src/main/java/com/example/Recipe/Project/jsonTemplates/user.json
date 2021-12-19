@@ -1,0 +1,14 @@
+{
+  "username" : "Chef Hamza",
+  "password": "123456",
+  "isAccountNonExpired": "true",
+  "isAccountNonLocked": "true",
+  "isCredentialsNonExpired": "true",
+  "isEnabled": "true",
+  "userMeta": {
+
+    "name": "Hamza Ali",
+    "email": "hamza@Gmail.com"
+  }
+
+}

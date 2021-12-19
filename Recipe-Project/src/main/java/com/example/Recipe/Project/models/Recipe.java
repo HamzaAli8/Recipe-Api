@@ -32,10 +32,18 @@ public class Recipe {
     @Column(nullable = false)
     private Integer difficultyRating;
 
-    @NotNull
-    private String username;
 
     private Double averageReviewRating;
+
+    @ManyToOne(optional = false)
+    @JoinColumn
+    @JsonIgnore
+    private CustomUserDetails user;
+
+
+    public String getAuthor() {
+        return user.getUsername();
+    }
 
 
     @OneToMany(cascade = CascadeType.ALL)

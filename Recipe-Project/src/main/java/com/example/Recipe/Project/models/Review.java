@@ -1,10 +1,9 @@
 package com.example.Recipe.Project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,10 +17,18 @@ public class Review {
     @GeneratedValue
     private Long id;
 
-    @NotNull
-    private String username;
-
     private String description;
+
+    @ManyToOne(optional = false)
+    @JoinColumn
+    @JsonIgnore
+    private CustomUserDetails user;
+
+
+    @Column(name = "username")
+    public String getAuthor() {
+        return user.getUsername();
+    }
 
     @NotNull
     private Integer rating;
